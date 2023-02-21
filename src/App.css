@@ -1,0 +1,58 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  margin: 30rem auto; /*Added to allow scrolling*/
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.box1 {
+  transform: rotate(20deg);
+  background-color: lightcoral;
+}
+
+.box2 {
+  transform: rotate(16deg);
+  background-color: lightseagreen;
+}
+
+.box3 {
+  transform: rotate(12deg);
+  background-color: lightgreen;
+}
+
+.box4 {
+  transform: rotate(8deg);
+  background-color: lightskyblue;
+}
+
+.box5 {
+  transform: rotate(4deg);
+  background-color: cornflowerblue;
+}
+
+.box6 {
+  transform: rotate(0deg);
+  background-color: darkolivegreen;
+}

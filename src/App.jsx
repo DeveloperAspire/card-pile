@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -29,20 +29,27 @@ const App = () => {
   const [count, setCount] = useState(0);
   const rotateAnglesRef = useRef([20, 16, 12, 8, 4, 0]);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
+  gsap.registerPlugin(ScrollTrigger, Draggable);
 
+  useEffect(() => {
     const cards = gsap.utils.toArray(".panel");
 
-    gsap.from(cards, {
+    gsap.set(cards, {
       autoAlpha: 0,
-      scale: 0.4,
+      scale: 0.04,
+    });
+
+    gsap.to(cards, {
+      autoAlpha: 1,
+      scale: 1,
       stagger: 0.08,
       force3D: true,
       ease: "Power4.easeInOut",
       scrollTrigger: {
         trigger: ".container",
         start: "top center",
+        toggleActions: "play play reverse reverse",
+        markers: true,
       },
     });
 
@@ -52,7 +59,7 @@ const App = () => {
       onDragEnd: handleDragDirection,
       onDragEndParams: [cards, setCount, rotateAnglesRef],
     });
-  });
+  }, []);
 
   useEffect(() => {
     const cards = gsap.utils.toArray(".panel");
